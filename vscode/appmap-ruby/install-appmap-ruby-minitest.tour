@@ -1,0 +1,23 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Install AppMap for Minitest",
+  "steps": [
+    {
+      "file": "test/test_helper.rb",
+      "description": "You'll now install the AppMap Minitest helper.\n\n```ruby\nrequire 'appmap/minitest'\n```\n\nThis line should be placed **before** any other `require` statements.\n\n",
+      "line": 2
+    },
+    {
+      "title": "Run a test",
+      "description": "Now that you've added `appmap/minitest`, it's time to generate some AppMaps! To do that, you simply run the test with the environment variable `APPMAP=true`.\n\nYou can run one test a a time, or you can run all your tests. To run your entire test suite, run this command:\n\n>> APPMAP=true bundle exec rake test\n"
+    },
+    {
+      "directory": "tmp/appmap/minitest",
+      "description": "AppMaps files are stored in the directory `appmap/minitest`. Useful actions you can take in this folder:\n\n* You can open and display any AppMap by clicking on it.\n* You can delete all your AppMaps by removing this directory.\n"
+    },
+    {
+      "directory": "Open most recently modified AppMap",
+      "description": "If you run a single test case with `APPMAP=true`, you can open the AppMap by running the command `AppMap: Open most recently modified AppMap file`.\n\nTry it now. When you close the AppMap window, you'll return to this tour.\n\n[AppMap: Open most recently modified AppMap file](command:appmap.openMostRecentlyModifiedAppMap)"
+    }
+  ]
+}
