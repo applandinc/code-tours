@@ -16,7 +16,7 @@
       "description": "AppMaps files are stored in the directory `appmap/minitest`. Useful actions you can take in this folder:\n\n* You can open and display any AppMap by clicking on it.\n* You can delete all your AppMaps by removing this directory.\n"
     },
     {
-      "directory": "Open most recently modified AppMap",
+      "title": "Open most recently modified AppMap",
       "description": "If you run a single test case with `APPMAP=true`, you can open the AppMap by running the command `AppMap: Open most recently modified AppMap file`.\n\nTry it now. When you close the AppMap window, you'll return to this tour.\n\n[AppMap: Open most recently modified AppMap file](command:appmap.openMostRecentlyModifiedAppMap)"
     }
   ]
