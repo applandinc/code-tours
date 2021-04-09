@@ -1,0 +1,35 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Install AppMap for Ruby",
+  "steps": [
+    {
+      "file": "Gemfile",
+      "description": "Add the AppMap gem to your Gemfile. You should place the gem in the `:test, :development` group, like this:\n\n```ruby\ngroup :development, :test do\n  # other gems\n  gem 'appmap'\nend\n```\n\nThen run `bundle` to install:\n\n>> bundle\n\n",
+      "line": 3
+    },
+    {
+      "file": "config/application.rb",
+      "description": "AppMap provides a Railtie, which hooks into the Rails framework. The Railtie provides AppMap with information about web services and SQL execution.\n\nYou should put this code along with the other Railties in this file.\n\n```ruby\nrequire 'appmap/railtie' if defined?(AppMap)\n```\n\nThe `defined?` clause ensures that the app won't try and load the AppMap gem in production.\n",
+      "line": 4
+    },
+    {
+      "file": "config/application.rb",
+      "description": "AppMap has a feature called \"server process recording\". When you run your server with the environment variable `APPMAP_RECORD=true`, the entire server process will be recorded and saved to a file called `appmap.json`. If you use this feature, you should only run a single server process. Check your webserver documentation for how to configure single-process mode. It's the default for Webrick. for Puma, set `WEB_CONCURRENCY=1`. \n\nTo enable server process recording, add this configuration to your Application class.\n\n```\n    config.appmap.enabled = true if ENV['APPMAP_RECORD']\n```\n\nWhen you're done, it should look something like things:\n\n```ruby\nmodule MyApp\n  class Application < Rails::Application\n    # other config\n  \n    config.appmap.enabled = true if ENV['APPMAP_RECORD']\n  end\nend\n```\n",
+      "line": 12
+    },
+    {
+      "directory": "config/initializers",
+      "description": "Create a file in `config/initializers` called `appmap_remote_recording.rb`.\n\n>> touch config/initializers/appmap_remote_recording.rb\n\n",
+      "line": 1
+    },
+    {
+      "file": "config/initializers/appmap_remote_recording.rb",
+      "description": "Now insert the configuration for the AppMap remote recording middleware:\n\n```ruby\nif defined?(AppMap)\n  require 'appmap/middleware/remote_recording'\n\n  Rails.application.config.middleware.insert_after \\\n    Rails::Rack::Logger,\n    AppMap::Middleware::RemoteRecording\nend\n```\n\nYou can check your current middleware stack by running:\n\n>> bundle exec rake middleware\n\nYou should see `AppMap::Middleware::RemoteRecording` after `Rails::Rack::Logger`.",
+      "line": 1
+    },
+    {
+      "title": "Install the test helper",
+      "description": "Now you'll install an AppMap test helper.\n\nIf you're using `minitest` (you have a folder called *test*), continue with the [AppMap for minitest tour](command:codetour.startTourByTitle?[\"Install AppMap for Minitest\"]).\n\nIf you're using `rspec` (you have a folder called *spec*), continue with the [AppMap for rspec tour](command:codetour.startTourByTitle?[\"Install AppMap for RSpec\"]).\n"
+    }
+  ]
+}
