@@ -13,7 +13,7 @@
     },
     {
       "directory": "tmp/appmap/minitest",
-      "description": "AppMaps files are stored in the directory `appmap/minitest`. Useful actions you can take in this folder:\n\n* You can open and display any AppMap by clicking on it.\n* You can delete all your AppMaps by removing this directory.\n"
+      "description": "AppMaps files are stored in the directory `tmp/appmap/minitest`. Useful actions you can take in this folder:\n\n* You can open and display any AppMap by clicking on it.\n* You can delete all your AppMaps by removing this directory.\n"
     },
     {
       "title": "Open most recently modified AppMap",
